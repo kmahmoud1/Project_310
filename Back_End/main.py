@@ -25,6 +25,9 @@ class Signup(BaseModel):
 class Likes(BaseModel):
     postid: int
 
+class Dislikes(BaseModel):
+    postid: int
+
 print("a")
 models.Base.metadata.create_all(bind=engine)
 
@@ -79,7 +82,7 @@ async def post(file: UploadFile, db: Session = Depends(get_db), description: str
     res = ML.getScore(request_object_content)
 
     db_post = models.Post(user_id = 1, date = time.time(), description=description, happiness=[int(res*100) if res!=-1 else random.randint(10,100)],
-     commentCounts=0, likesCount=0)
+     commentCounts=0, likesCount=0, dislikesCount=0)
     db.add(db_post)
     db.commit()
     db.refresh(db_post)
@@ -168,3 +171,21 @@ def likes(l: Likes, db:Session=Depends(get_db)):
     old.update({"likesCount":old[0].likesCount+1})
     db.commit()
     return "LOL You liked this. OK, great. See you later."
+
+@app.post("/dislikes")
+def dislikes(l: dislikes, db:Session=Depends(get_db)):
+    old = db.query(models.Post).filter(models.Post.id == l.postid)
+    print(old[0].dislikesCount+1)
+    old.update({"dislikesCount":old[0].dislikesCount+1})
+    db.commit()
+    return "LOL You Disliked this. OK, great. See you later."
+
+@app.post("/comment")
+def likes(l: Likes, db:Session=Depends(get_db)):
+    old = db.query(models.Post).filter(models.Post.id == l.postid)
+    print(old[0].likesCount+1)
+    old.update({"commentCount":old[0].likesCount+1})
+    db.commit()
+    return "LOL You liked this. OK, great. See you later."
+
+
