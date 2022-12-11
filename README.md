@@ -99,5 +99,21 @@ GUI for main components is complete.
 ![GUI](https://github.com/HappieEE123/Project_310/blob/2db917711289f4691fd00371237c6f28f411eff6/imgs/image%204.PNG) 
 
 
+## What has changed since A3
+Feature 1- Comment Section and dislike button
+
+Feature 2-  User Profile 
+
+APIs incorporated into system: 
+Axios to get and update # of dislikes to and from the server
+dislikes count feature is enabled, which is tracked through a counter and displayed on individual posts. This is an improvement from the previous because it allows a more accurate depiction of how users feel about the photos. in the future, this dislike button is not shown to users, but instead will be used to customize the users feed based on what they dislike. 
+
+React Router, React, and React Dom to establish a different url for comment section and Profile page. This allows comment section and Profile page to exist independent from the home page, for when a dashboard is later created.
+
+<img width="691" alt="Screenshot 2022-12-11 at 01 43 02" src="https://user-images.githubusercontent.com/77289966/206896983-4240c59c-f436-4d80-ab33-910068ca9050.png">
+<img width="1440" alt="Screenshot 2022-12-11 at 01 44 07" src="https://user-images.githubusercontent.com/77289966/206896985-3195ec81-05db-4559-9520-c8db87a42b88.png">
+<img width="534" alt="Screenshot 2022-12-11 at 01 44 49" src="https://user-images.githubusercontent.com/77289966/206896987-8f371686-2f0c-42ec-864e-22c5a98d3276.png">
+<img width="495" alt="Screenshot 2022-12-11 at 01 46 09" src="https://user-images.githubusercontent.com/77289966/206896989-90898194-33d2-4874-8f10-66cf146b037d.png">
+
 
 
