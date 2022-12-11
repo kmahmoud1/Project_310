@@ -29,10 +29,28 @@ const Card = ({postData}: Props) => {
                 console.log(error);
             });
     }
+    const addDislikes = (postId: number) => {
+        axios.post('https://api.weasoft.com/dislikes', {
+            postId
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     const showComments = (postId: number) => {
-
-    }
+        axios.post('https://api.weasoft.com/comments', {
+            postId
+        }).then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
     return (
         <IonCard>
@@ -72,7 +90,13 @@ const Card = ({postData}: Props) => {
                          onClick={() => addLikes(postData.id)}
                          style={{cursor: 'pointer'}}>
                 </IonIcon>
+                <IonIcon icon={thumbsUpOutline}
+                         onClick={() => addDislikes(postData.id)}
+                         style={{cursor: 'pointer' ,transform: [{rotateY: '180deg'}]}}>
+                        
+                </IonIcon>
                 {postData.likesCount} &nbsp;
+                {postData.dislikes}
                 <IonIcon icon={chatboxEllipsesOutline}
                          onClick={() => showComments(postData.id)}
                          style={{cursor: 'pointer'}}>
